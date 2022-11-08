@@ -1,0 +1,133 @@
+@use "../../../styles.scss" as *;
+
+.clients {
+  display: flex;
+  flex-direction: column;
+  gap: $mp6;
+  padding-top: $mp4;
+  @media (min-width: $desktop-bp) {
+    padding-top: 0;
+  }
+
+  .p-button {
+    padding: $mp3 $mp5;
+    margin-inline: $mp1;
+  }
+
+  &__header {
+    border-bottom: solid 1px $c-grey4;
+    padding: $mp5 $mp3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (min-width: $desktop-bp) {
+      padding: $mp5;
+    }
+
+    & > h3 {
+      font-size: $fs8;
+    }
+
+    & > a {
+      & .p-button {
+        display: none;
+        @media (min-width: $desktop-bp) {
+          display: initial;
+        }
+      }
+
+      & fa-icon {
+        font-size: $fs6;
+        background-color: $c-grey2;
+        color: white;
+        padding: $mp3;
+        border-radius: 10px;
+        @media (min-width: $desktop-bp) {
+          display: none;
+        }
+      }
+    }
+
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+
+    .p-inputtext {
+      font-size: $fs4;
+      padding: $mp2 $mp6;
+    }
+
+    &--welcome {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-block: $mp10;
+      gap: $mp3;
+
+      & > h3 {
+        font-size: $fs8;
+        text-align: center;
+      }
+    }
+
+    &--body {
+      display: flex;
+      flex-direction: column;
+      gap: $mp4;
+
+      .desktop-table {
+        display: none;
+        @media (min-width: $desktop-bp) {
+          display: initial;
+        }
+      }
+
+      .mobile {
+        @media (min-width: $desktop-bp) {
+          display: none;
+        }
+
+        &__client {
+          width: 100%;
+          padding: $mp3 $mp1;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          &--id {
+            width: 60%;
+          }
+
+          &--avatar {
+            background-color: lightblue;
+            color: blue;
+            padding: $mp4;
+            border-radius: $mp3;
+          }
+
+          &--balance {
+            text-align: center;
+          }
+
+          &--more {
+            padding: $mp3;
+          }
+
+          & > div {
+            h3 {
+              font-size: $fs6;
+              margin-bottom: $mp1;
+            }
+
+            p {
+              color: $c-grey2;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}

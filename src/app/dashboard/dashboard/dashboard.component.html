@@ -1,0 +1,75 @@
+<div class="container">
+  <!-- SideBar -->
+  <div class="sidebar" [class.closeNav]="isNavOpen">
+    <div class="sidebar__brand" data-toggle="collapse" data-target="#navbarMain">
+      <a class="sidebar__brand--name">Microfin</a>
+    </div>
+
+    <ul class="sidebar__links">
+      <li class="sidebar__link">
+        <!-- To include slash before the root pf the link parameter array or not. test it for routing -->
+
+        <!-- fix the router link of the child routes of this module -->
+        <a [routerLink]="['welcome']" (click)="toggleNav()"> <fa-icon [icon]="faLaunch"></fa-icon>Get Started</a>
+      </li>
+
+      <li class="sidebar__link">
+        <a [routerLink]="['overview']" (click)="toggleNav()"> <fa-icon [icon]="faDashboard"></fa-icon>Dashboard</a>
+      </li>
+
+      <li class="sidebar__link">
+        <a [routerLink]="['invoices']" (click)="toggleNav()"> <fa-icon [icon]="faDashboard"></fa-icon>Invoices</a>
+      </li>
+
+      <li class="sidebar__link">
+        <a [routerLink]="['estimates']" (click)="toggleNav()"> <fa-icon [icon]="faDashboard"></fa-icon>Estimates</a>
+      </li>
+
+      <li class="sidebar__link">
+        <a [routerLink]="['']" (click)="toggleNav()"> <fa-icon [icon]="faDashboard"></fa-icon>Expenses</a>
+      </li>
+
+      <li class="sidebar__link">
+        <a [routerLink]="['']" (click)="toggleNav()"> <fa-icon [icon]="faDashboard"></fa-icon>My Bookkeeping</a>
+      </li>
+
+      <li class="sidebar__link">
+        <a [routerLink]="['clients']"> <fa-icon [icon]="faClients"></fa-icon>Clients</a>
+      </li>
+
+      <li class="sidebar__link">
+        <a href="#"><fa-icon [icon]="faUser"></fa-icon>Profile</a>
+      </li>
+
+      <li class="sidebar__link">
+        <a href="#"> <fa-icon [icon]="faLogOut"></fa-icon>Log Out</a>
+      </li>
+    </ul>
+  </div>
+
+
+  <main>
+    <!-- NavBar toggle button -->
+    <nav class="navbar">
+      <div class="navbar__flexible">
+        <div class="navbar__brand">
+          <a class="navbar__brand--finlog">Microfin</a>
+        </div>
+
+        <span class="navbar__toggle--icon hamburger" *ngIf="!isNavOpen" (click)="toggleNav()">
+          <fa-icon [icon]="faBars"></fa-icon>
+        </span>
+        <span class="navbar__toggle--icon cancel" *ngIf="isNavOpen" (click)="toggleNav()">
+          <fa-icon [icon]="faCancel"></fa-icon>
+        </span>
+      </div>
+    </nav>
+
+    <!-- Main Dashboard -->
+    <section class="dashboard">
+      <div class="dashboard__flexible">
+        <router-outlet></router-outlet>
+      </div>
+    </section>
+  </main>
+</div>

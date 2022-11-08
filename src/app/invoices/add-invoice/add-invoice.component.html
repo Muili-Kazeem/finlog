@@ -1,0 +1,131 @@
+<div class="add-invoice container">
+  <div class="add-invoice__header">
+    <h3 class="add-invoice__header--title">{{title}}</h3>
+  </div>
+
+  <form novalidate [formGroup]="invoiceForm" class="invoice-form">
+    <div class="invoice-form__info">
+      <div class="invoice-form__info__flex">
+        <span class="invoice-form__info__customer">
+          <label for="customer"> Customer </label>
+          <p-autoComplete id="customer" formControlName="customer" [suggestions]="filteredCustomers" (completeMethod)="filterCustomer($event)" [dropdown]="true"></p-autoComplete>
+        </span>
+        <span class="invoice-form__info__billing-address">
+          <label for="billingAddress"> Billing Address </label>
+          <textarea id="billingAddress" rows="5" cols="30" pInputTextarea [autoResize]="true" formControlName="billingAddress"></textarea>
+        </span>
+      </div>
+      <div class="invoice-form__info__flex calendar">
+        <span class="invoice-form__info__invoice-date">
+          <label for="invoiceDate"> Invoice Date </label>
+          <p-calendar inputId="invoiceDate" dateFormat="dd-mm-yy" formControlName="invoiceDate" [showIcon]="true" [showButtonBar]="true"></p-calendar>
+        </span>
+        <span class="invoice-form__info__expiry-date">
+          <label for="expiryDate"> Expiry Date </label>
+          <p-calendar inputId="expiryDate" dateFormat="dd-mm-yy" formControlName="expiryDate" [showIcon]="true" [showButtonBar]="true"></p-calendar>
+        </span>
+      </div>
+      <div class="invoice-form__info__flex">
+        <span class="invoice-form__info__invoice-number">
+          <label for="invoiceNumber"> Invoice number </label>
+          <input id="invoiceNumber" type="text" pInputText formControlName="invoiceNumber">
+        </span>
+        <span class="invoice-form__info__reference">
+          <label for="reference"> Reference </label>
+          <input id="reference" type="text" pInputText formControlName="reference">
+        </span>
+      </div>
+    </div>
+
+    <div class="main-table invoice-form__table">
+      <div class="table-header-mobile"> Invoice Details </div>
+      <div class="table-header">
+        <div class="row">
+          <div class="col col-no"> # </div>
+          <div class="col col-product"> Product </div>
+          <div class="col col-description"> Description </div>
+          <div class="col q-r">
+            <div class="col col-quantity"> Quantity </div>
+            <div class="col col-rate"> Rate </div>
+          </div>
+          <div class="col col-discount"> Discount </div>
+          <div class="col col-amount"> Amount </div>
+        </div>
+      </div>
+      <div class="table-body">
+        <ng-container formArrayName="invoiceItems" *ngFor="let invoiceItem of invoiceItems.controls let i=index">
+          <ng-container class="invoiceInfo" [formGroupName]="i">
+            <div class="row">
+              <div class="col col-no"> {{ i + 1 }} </div>
+              <div class="col col-product p-float-label">
+                <input id="col-product" pInputText type="text" formControlName="product">
+                <label for="col-product">product</label>
+              </div>
+              <div class="col col-description p-float-label">
+                <input id="col-description" pInputText type="text" formControlName="description">
+                <label for="col-description">description</label>
+              </div>
+              <div class="col q-r">
+                <div class="col-quantity p-float-label">
+                  <input id="col-quantity" pInputText type="text" formControlName="quantity">
+                  <label for="col-quantity">quantity</label>
+                </div>
+                <div class="col-rate p-float-label">
+                  <input id="col-rate" pInputText type="text" formControlName="rate">
+                  <label for="col-rate">rate</label>
+                </div>
+              </div>
+              <div class="col col-discount p-float-label">
+                  <input id="col-discount" pInputText type="text" formControlName="discount">
+                  <label for="col-discount">discount</label>
+              </div>
+              <div class="col col-amount">
+                <p>$34699</p>
+                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-text" (click)="removeInvoiceItem(i)"></button>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="calculations line-buttons">
+        <div class="line-buttons">
+          <button pButton pRipple type="button" icon="pi pi-plus-circle" label="Add new item" class="p-button-text" (click)="addInvoiceItem()"></button>
+          <button pButton pRipple type="button" icon="pi pi-times-circle" label="Clear all lines" class="p-button-text p-button-warning" (click)="resetInvoiceItems()"></button>
+        </div>
+        <div class="calculations">
+          <div>
+            <span>Subtotal: </span> <span class="subtotal">#000</span>
+          </div>
+          <div>
+            <span>Tax: </span> <span class="tax"><input pInputText type="text" formControlName="tax"></span>
+          </div>
+          <div>
+            <span>Discount: </span> <span class="discount"><input pInputText type="text" formControlName="discount"></span>
+          </div>
+          <div>
+            <span>Invoice Total: </span> <span class="total">#000</span>
+          </div>
+        </div>
+      </div>
+      <div class="table-footer p-float-label">
+        <textarea id="notes" rows="5" cols="30" pInputTextarea [autoResize]="true" formControlName="notes"></textarea>
+        <label for="notes"> Notes / Terms </label>
+      </div>
+    </div>
+  </form>
+
+  <div class="add-invoice__cta">
+    <div>
+      <button pButton pRipple type="button" label="Cancel" class="p-button-rounded" (click)="saveForm()"></button>
+      <button pButton pRipple type="button" label="Clear all" class="p-button-rounded" (click)="resetAll()"></button>
+    </div>
+    <button pButton pRipple type="button" label="Print or Preview" class="p-button-rounded" (click)="resetInvoiceItems()" [disabled]="!invoiceForm.valid"></button>
+    <div>
+      <button pButton pRipple type="button" label="Save" class="p-button-rounded" (click)="addInvoiceItem()" [disabled]="!invoiceForm.valid"></button>
+      <button pButton pRipple type="button" label="Save and Send" class="p-button-rounded" (click)="popInvoiceDialog()" [disabled]="!invoiceForm.valid"></button>
+    </div>
+    <div class="mobile">
+      <p-splitButton label="Save and Send" (onClick)="popInvoiceDialog()" [model]="actionOptions"></p-splitButton>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+@use "../../../styles.scss" as *;
+
+.container {
+  display: flex;
+  overflow-y: auto;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.sidebar {
+  border-right: $c-grey3 2px solid;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  background: $c-grey5;
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  position: absolute;
+  transform: translateX(100%);
+  gap: $mp5;
+  transition: all 300ms ease-in-out;
+  @media (min-width: $tab-bp) {
+    width: 250px;
+    position: initial;
+    transform: translateX(0);
+    background: white;
+  }
+
+  &__brand {
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: $mp3;
+    padding: $mp4 0;
+    @media (min-width: $tab-bp) {
+      gap: $mp5;
+    }
+  }
+
+  &__link {
+    padding-left: $mp3;
+    cursor: pointer;
+    @media (min-width: $tab-bp) {
+      padding-left: $mp6;
+    }
+    &:hover {
+      a {
+        color: $c-grey0;
+        font-weight: bold;
+        fa-icon {
+          color: $c-grey0;
+        }
+      }
+    }
+
+    a {
+      color: $c-grey2;
+      font-size: $fs6;
+      @media (min-width: $tab-bp) {
+        font-size: $fs4;
+      }
+
+      fa-icon {
+        color: $c-grey2;
+        margin-right: $mp3;
+        @media (max-width: $tab-bp) {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.sidebar.closeNav {
+  transform: translateX(0);
+}
+
+
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+
+  .navbar {
+    width: 100%;
+    @media (min-width: $tab-bp) {
+      display: none;
+    }
+
+    &__flexible {
+      width: min(100%, 1100px);
+      margin: 0 auto;
+      padding: $mp4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    &__brand {
+    }
+
+    &__toggle--icon {
+      padding: 8px 10px;
+      z-index: 1000;
+    }
+  }
+
+  .dashboard {
+    height: 100%;
+
+
+    &__flexible {
+      margin: 0 auto;
+      width: min(calc(100% - 40px), 900px);
+      height: 100%;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="content">
+    <div class="left-form">
+      <form novalidate [formGroup]="estimateMailForm">
+        <span>
+          <label class="recipientMail"> To </label>
+          {{ "Receiver Mail" }}
+        </span>
+        <span class="p-float-label">
+          <input id="mailSubject" type="email" pInputText formControlName="mailSubject">
+          <label for="mailSubject"> Subject </label>
+        </span>
+        <span class="p-float-label">
+          <textarea id="mailBody" rows="5" cols="30" pInputTextarea [autoResize]="true" formControlName="mailBody"></textarea>
+          <label for="mailBody"> Body </label>
+        </span>
+      </form>
+    </div>
+
+    <div class="right-preview">
+      <div>
+        Imma just preview the estimate here
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <button pButton pRipple type="button" label="Print" class="p-button-rounded p-button-outlined" (click)="true"></button>
+    <button pButton pRipple type="button" label="Send and close" class="p-button-rounded" (click)="true"></button>
+  </div>
+</div>

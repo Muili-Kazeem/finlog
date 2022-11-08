@@ -1,0 +1,73 @@
+@use  "../../../styles.scss" as *;
+
+.estimates {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: $mp7;
+  @media (min-width: $desktop-bp) {
+    padding-top: 0;
+  }
+
+  .p-inputtext {
+    font-size: $fs4;
+    padding: $mp2 $mp6;
+  }
+
+  &__header {
+    border-bottom: solid 1px $c-grey4;
+    padding: $mp5 $mp3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @media (min-width: $desktop-bp) {
+      padding: $mp5;
+    }
+
+    & > h3 {
+      font-size: $fs8;
+    }
+
+    & .p-button {
+      display: none;
+      @media (min-width: $desktop-bp) {
+        display: initial;
+        padding: $mp3 $mp5;
+      }
+    }
+
+    & fa-icon {
+      font-size: $fs6;
+      @media (min-width: $desktop-bp) {
+        display: none;
+      }
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+
+    &--welcome {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-block: $mp10;
+      gap: $mp3;
+
+      & > h3 {
+        font-size: $fs8;
+        text-align: center;
+      }
+
+      & > div {
+      }
+    }
+
+    .desktop {
+      @media (max-width: $tab-bp) {
+        display: none;
+      }
+    }
+  }
+}

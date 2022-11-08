@@ -1,0 +1,87 @@
+<div class="add-estimate container">
+  <div class="add-estimate__header">
+    <h3 class="add-estimate__header--title">{{title}}</h3>
+  </div>
+
+  <form novalidate class="add-estimate-form">
+    <div class="add-estimate-form__contact container">
+      <h4>Contact</h4>
+      <div class="wrapper">
+        <span>
+          <label for="customer"> Customer </label>
+          <input id="customer" type="text" pInputText>
+        </span>
+        <span>
+          <label for="company"> Company </label>
+          <input id="company" type="text" pInputText>
+        </span>
+        <span>
+          <label for="mail"> Email </label>
+          <input id="mail" type="email" pInputText>
+        </span>
+        <div class="flex">
+          <span>
+            <label for="phone"> Phone </label>
+            <input id="phone" type="text" pInputText>
+          </span>
+          <span>
+            <label for="mobile"> Mobile </label>
+            <input id="mobile" type="text" pInputText>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="add-estimate-form__billing container">
+      <h4>Billing</h4>
+      <div class="wrapper">
+        <span>
+          <label for="customer"> Currency </label>
+          <p-autoComplete id="customer" [suggestions]="filteredCustomers" (completeMethod)="filterCustomer($event)" [dropdown]="true"></p-autoComplete>
+        </span>
+        <span>
+          <label for="address-line-1"> Address line 1 </label>
+          <input id="address-line-1" type="text" pInputText>
+        </span>
+        <span>
+          <label for="address-line-2"> Address line 2 </label>
+          <input id="address-line-2" type="text" pInputText>
+        </span>
+        <div class="billing-flex flex">
+          <span>
+            <label for="city"> City </label>
+            <input id="city" type="text" pInputText>
+          </span>
+          <div class="flex">
+            <span>
+              <label for="customer"> Country </label>
+              <p-autoComplete id="customer" [suggestions]="filteredCustomers" (completeMethod)="filterCustomer($event)" [dropdown]="true"></p-autoComplete>
+            </span>
+            <span>
+              <label for="customer"> State </label>
+              <p-autoComplete id="customer" [suggestions]="filteredCustomers" (completeMethod)="filterCustomer($event)" [dropdown]="true"></p-autoComplete>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="add-estimate-form__more container">
+      <h4>More</h4>
+      <div class="wrapper">
+        <span>
+          <label for="account-number"> Account number </label>
+          <input id="account-number" type="text" pInputText>
+        </span>
+        <span>
+          <label for="website"> Website </label>
+          <input id="website" type="text" pInputText>
+        </span>
+      </div>
+    </div>
+  </form>
+
+  <div class="add-estimate__cta">
+      <button pButton pRipple type="button" label="Save" class="p-button-rounded"></button>
+  </div>
+</div>

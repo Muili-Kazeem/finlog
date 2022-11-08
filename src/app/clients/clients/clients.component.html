@@ -1,0 +1,84 @@
+<div class="clients container">
+  <div class="clients__header">
+    <h3 class="clients__header--title">{{title}}</h3>
+    <a [routerLink]="['../add']"><button pButton pRipple type="button" label="Create a client" class="p-button-rounded"></button> <fa-icon [icon]='faAdd'></fa-icon></a>
+  </div>
+
+  <main class="clients__main">
+    <div class="clients__main--body">
+      <div class="desktop-table" *ngIf="clients.length > 0; else noClient">
+        <p-table [value]="clients" styleClass="p-datatable-lg p-datatable-striped" #tb
+          dataKey="id" [autoLayout]="true" [resizableColumns]="true" columnResizeMode="expand"
+          [paginator]="true" [rows]="5" [alwaysShowPaginator]="false" [showJumpToPageDropdown]="true" [showPageLinks]="false"
+          [globalFilterFields]="['name', 'company', 'email', 'phone', 'balance', 'overdue']">
+          <ng-template pTemplate="caption">
+            <div>
+              <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="tb.filterGlobal($any($event).target.value, 'contains')" placeholder="Search clients" />
+              </span>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th pSortableColumn="balance">Balance <p-sortIcon field="balance"></p-sortIcon></th>
+              <th>Overdue</th>
+              <th>Actions</th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-client>
+            <tr>
+              <td [routerLink]="['../profile']" > <div>{{ client.name }}</div> <div>{{ client.company }}</div></td>
+              <td> {{ client.email }}</td>
+              <td> {{ client.balance }}</td>
+              <td> {{ client.overdue }}</td>
+              <td> <fa-icon [icon]='faEdit'></fa-icon> <fa-icon [icon]='faDel' (click)="deleteClient(client.id)"></fa-icon> </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+
+      <div class="mobile">
+        <p-table [value]="clients" styleClass="p-datatable-lg p-datatable-striped" #tb
+          dataKey="id" [autoLayout]="true" [paginator]="true" [rows]="7" [alwaysShowPaginator]="false" [showJumpToPageDropdown]="true"
+          [showPageLinks]="false" [globalFilterFields]="['name', 'company', 'email', 'phone', 'balance', 'overdue']">
+          <ng-template pTemplate="caption">
+            <div>
+              <span class="p-input-icon-left ml-auto">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="tb.filterGlobal($any($event).target.value, 'contains')" placeholder="Search clients" />
+              </span>
+            </div>
+          </ng-template>
+          <ng-template pTemplate="body" let-client>
+            <tr>
+              <td>
+                <div class="mobile__client">
+                  <div class="mobile__client--avatar"> {{ client.name[0] }} </div>
+                  <div class="mobile__client--id" [routerLink]="['../profile']" > <h3>{{ client.name }}</h3> <p>{{ client.company }}</p></div>
+                  <div class="mobile__client--balance"> <h3>{{ client.balance }}</h3> <p>Balance</p> </div>
+                  <div class="mobile__client--more"> <fa-icon [icon]='faDots' (click)="moreMobile = true" ></fa-icon> </div>
+                </div>
+              </td>
+            </tr>
+            <p-sidebar [(visible)]="moreMobile" position="bottom" [baseZIndex]="10000" [showCloseIcon]="false" >
+              <p (click)="deleteClient(client.id)" >Edit</p>
+              <p (click)="deleteClient(client.id)"> Delete</p>
+            </p-sidebar>
+          </ng-template>
+        </p-table>
+      </div>
+
+      <ng-template #noClient>
+        <div class="clients__main--welcome">
+          <h3>Clients make Businesses<br>go round - hand in hand</h3>
+          <div>Create and keep track of all clients, all in one place</div>
+          <button pButton pRipple type="button" label="Create a client" class="p-button-rounded"></button>
+        </div>
+      </ng-template>
+    </div>
+  </main>
+</div>

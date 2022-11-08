@@ -1,0 +1,148 @@
+<div class="add-estimate container">
+  <div class="add-estimate__header">
+    <h3 class="add-estimate__header--title">{{title}}</h3>
+  </div>
+
+  <form novalidate [formGroup]="estimateForm" class="estimate-form">
+    <div class="estimate-id">
+      <div class="estimate-id__container">
+        <div class="estimate-id__preview">
+          <span>
+          {{ estimateForm.get('firstEstimateId')?.value }}
+          </span>
+          <span>
+          {{ estimateForm.get('secondEstimateId')?.value }}
+          </span>
+        </div>
+        <div class="estimate-id__form">
+          <span>
+            <input type="text" pInputText formControlName="firstEstimateId">
+          </span>
+          <span>
+            <input type="text" pInputText formControlName="secondEstimateId">
+          </span>
+        </div>
+      </div>
+      <div class="estimate-total">
+        <p class="estimate-total__tag">Total:</p>
+        <p class="estimate-total__amount">#22675</p>
+      </div>
+    </div>
+
+    <div class="estimate-form__info">
+      <div class="sides">
+        <div class="estimate-form__info__flex left">
+          <span class="estimate-form__info__customer">
+            <label for="customer"> Customer </label>
+            <p-autoComplete id="customer" formControlName="customer" [suggestions]="filteredCustomers" (completeMethod)="filterCustomer($event)" [dropdown]="true"></p-autoComplete>
+          </span>
+          <span class="estimate-form__info__billing-address">
+            <label for="billingAddress"> Billing Address </label>
+            <textarea id="billingAddress" rows="5" cols="30" pInputTextarea [autoResize]="true" formControlName="billingAddress"></textarea>
+          </span>
+        </div>
+        <div class="estimate-form__info__flex right">
+          <span class="estimate-form__info__estimate-date">
+            <label for="estimateDate"> Estimate Date </label>
+            <p-calendar inputId="estimateDate" dateFormat="dd-mm-yy" formControlName="estimateDate" [showIcon]="true" [showButtonBar]="true"></p-calendar>
+          </span>
+          <span class="estimate-form__info__expiry-date">
+            <label for="expiryDate"> Expiry Date </label>
+            <p-calendar inputId="expiryDate" dateFormat="dd-mm-yy" formControlName="expiryDate" [showIcon]="true" [showButtonBar]="true"></p-calendar>
+          </span>
+          <span class="estimate-form__info__mail">
+            <label for="recipientMail"> Recipient Mail </label>
+            <input id="recipientMail" type="email" pInputText formControlName="recipientMail">
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-table estimate-form__table">
+      <div class="table-header-mobile"> Estimate Details </div>
+      <div class="table-header">
+        <div class="row">
+          <div class="col col-no"> # </div>
+          <div class="col col-item"> Items </div>
+          <div class="col col-description"> Description </div>
+          <div class="col q-r">
+            <div class="col col-quantity"> Quantity </div>
+            <div class="col col-rate"> Rate </div>
+          </div>
+          <div class="col col-discount"> Discount </div>
+          <div class="col col-amount"> Amount </div>
+        </div>
+      </div>
+      <div class="table-body">
+        <ng-container formArrayName="estimateItems" *ngFor="let estimateItem of estimateItems.controls let i=index">
+          <ng-container class="estimateInfo" [formGroupName]="i">
+            <div class="row">
+              <div class="col col-no"> {{ i + 1 }} </div>
+              <div class="col col-item p-float-label">
+                <input id="col-item" pInputText type="text" formControlName="item">
+                <label for="col-item">item</label>
+              </div>
+              <div class="col col-description p-float-label">
+                <input id="col-description" pInputText type="text" formControlName="description">
+                <label for="col-description">description</label>
+              </div>
+              <div class="col q-r">
+                <div class="col col-quantity p-float-label">
+                  <input id="col-quantity" pInputText type="text" formControlName="quantity">
+                  <label for="col-quantity">quantity</label>
+                </div>
+                <div class="col col-rate p-float-label">
+                  <input id="col-rate" pInputText type="text" formControlName="rate">
+                  <label for="col-rate">rate</label>
+                </div>
+              </div>
+              <div class="col col-discount p-float-label">
+                <input id="col-discount" pInputText type="text" formControlName="discount">
+                <label for="col-discount">discount</label>
+              </div>
+              <div class="col col-amount">
+                <p>$34699</p>
+                <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-text" (click)="removeEstimateItem(i)"></button>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+      <div class="calculations line-buttons">
+        <div class="line-buttons">
+          <button pButton pRipple type="button" icon="pi pi-plus-circle" label="Add new item" class="p-button-text" (click)="addEstimateItem()"></button>
+          <button pButton pRipple type="button" icon="pi pi-times-circle" label="Clear all lines" class="p-button-text p-button-warning" (click)="resetEstimateItems()"></button>
+        </div>
+        <div class="calculations">
+          <div>
+            <span>Subtotal: </span> <span class="subtotal">#000</span>
+          </div>
+          <div>
+            <span>Tax: </span> <span class="tax"><input pInputText type="text" formControlName="tax"></span>
+          </div>
+          <div>
+            <span>Discount: </span> <span class="discount"><input pInputText type="text" formControlName="discount"></span>
+          </div>
+          <div>
+            <span>Estimate Total: </span> <span class="total">#000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="add-estimate__cta">
+    <div>
+      <button pButton pRipple type="button" label="Cancel" class="p-button-rounded" (click)="saveForm()"></button>
+      <button pButton pRipple type="button" label="Clear all" class="p-button-rounded" (click)="resetAll()"></button>
+    </div>
+    <button pButton pRipple type="button" label="Print or Preview" class="p-button-rounded" (click)="addEstimateItem()" [disabled]="!estimateForm.valid"></button>
+    <div>
+      <button pButton pRipple type="button" label="Save" class="p-button-rounded" (click)="addEstimateItem()" [disabled]="!estimateForm.valid"></button>
+      <button pButton pRipple type="button" label="Save and Send" class="p-button-rounded" (click)="popEstimateDialog()" [disabled]="!estimateForm.valid"></button>
+    </div>
+    <div class="mobile">
+      <p-splitButton label="Save and Send" (onClick)="popEstimateDialog()" [model]="actionOptions"></p-splitButton>
+    </div>
+  </div>
+</div>

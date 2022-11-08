@@ -1,0 +1,8 @@
+@use "../../../styles.scss" as *;
+
+@use "./layout.dashboard.component";
+
+fa-icon {
+  font-size: $mp4;
+  color: black;
+}

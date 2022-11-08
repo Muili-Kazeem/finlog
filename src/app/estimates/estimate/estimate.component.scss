@@ -1,0 +1,96 @@
+@use "../../../styles.scss" as *;
+
+.estimate {
+  padding-block: $mp5;
+  @media (min-width: $desktop-bp) {
+    width: 80%;
+    margin: auto;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: $mp3;
+    font-size: $fs7;
+  }
+
+  &__detail {
+    & > div:first-child {
+      @media (min-width: $desktop-bp) {
+        margin-block: $mp6;
+        display: flex;
+        gap: $mp4;
+      }
+    }
+
+    & .side {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: $mp4;
+    }
+
+    .estimate__info {
+      width: 80%;
+      margin-inline: auto;
+      @media (min-width: $desktop-bp) {
+        width: 40%;
+      }
+
+      & > div {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        @media (min-width: $desktop-bp) {
+          flex-direction: column;
+          gap: $mp1;
+        }
+      }
+    }
+
+    .estimate-items__info {
+      margin-block: $mp5;
+      @media (min-width: $desktop-bp) {
+        margin: 0;
+        width: 60%;
+      }
+    }
+
+    .estimate__total {
+      margin: $mp4 auto;
+      @media (min-width: $desktop-bp) {
+        width: 50%;
+      }
+      div {
+        margin-block: $mp2;
+        display: flex;
+        justify-content: space-between;
+        border: solid red 1px;
+      }
+    }
+  }
+
+  &__action-btn {
+    padding-block: $mp4;
+    display: flex;
+    gap: $mp3;
+    justify-content: center;
+    @media (min-width: $desktop-bp) {
+      gap: $mp7;
+    }
+  }
+
+  & .p-button {
+    font-size: $fs4;
+    padding: $mp3 $mp6;
+  }
+}
+
+:host ::ng-deep {
+  .p-datatable {
+    tr th:nth-child(2), tr td:nth-child(2) {
+      text-align: end;
+    }
+  }
+}

@@ -1,0 +1,61 @@
+// Defining Global style Variable
+// Design systems are also extablished and defined here for ease of responsive styling
+
+
+// Font Family
+$ff-primary: 'Quicksand', sans-serif;
+// $ff-secondary: 'Urbanist', sans-serif;
+$ff-secondary: 'Inter Tight', sans-serif;
+
+
+// Media queries
+$desktop-bp: 71em;
+$tab-bp: 55em;
+
+
+// Font-sizes
+$fs1: 0.75rem;
+$fs2: 0.875rem;
+$fs3: 1rem;
+$fs4: 1.125rem;
+$fs5: 1.25rem;
+$fs6: 1.5rem;
+$fs7: 1.875rem;
+$fs8: 2.25rem;
+$fs9: 3rem;
+$fs10: 3.75rem;
+$fs11: 4.5rem;
+
+
+//Margins and Paddings
+$mp1: 4px;
+$mp2: 8px;
+$mp3: 12px;
+$mp4: 16px;
+$mp5: 24px;
+$mp6: 32px;
+$mp7: 48px;
+$mp8: 64px;
+$mp9: 96px;
+$mp10: 128px;
+$mp11: 192px;
+$mp12: 256px;
+$mp13: 384px;
+
+
+// Font-weights
+$font-weights: (
+  "regular": 400,
+  "medium": 600,
+  "bold": 700,
+  "black": 900
+);
+
+
+// Colour
+$c-grey0: hsl(212, 56%, 16%);
+$c-grey1: hsl(209, 15%, 28%);
+$c-grey2: hsl(207, 12%, 43%);
+$c-grey3: hsl(208, 12%, 58%);
+$c-grey4: hsl(210, 16%, 76%);
+$c-grey5: hsl(208, 21%, 88%);

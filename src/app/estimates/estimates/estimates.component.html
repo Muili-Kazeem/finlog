@@ -1,0 +1,59 @@
+<div class="estimates container">
+  <div class="estimates__header">
+    <h3 class="estimates__header--title">{{title}}</h3>
+    <a [routerLink]="['add']"> <button pButton pRipple type="button" label="Create an estimate" class="p-button-rounded"></button> <fa-icon [icon]='faAdd'></fa-icon></a>
+  </div>
+
+  <main class="estimates__main">
+    <div class="desktop">
+      <p-table *ngIf="estimates.length > 0; else noEstimate" styleClass="p-datatable-lg p-datatable-striped"
+        #tb1 [value]="estimates" dataKey="id" [autoLayout]="true" [resizableColumns]="true" columnResizeMode="expand"
+        [paginator]="true" [rows]="5" [alwaysShowPaginator]="false" [showJumpToPageDropdown]="true" [showPageLinks]="false"
+        [globalFilterFields]="['customer', 'estimateTotal', 'status', 'estimateDate', 'secondEstimateId', 'firstEstimateId']">
+        <ng-template pTemplate="caption">
+          <div>
+            <span class="p-input-icon-left ml-auto">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" (input)="tb1.filterGlobal($any($event).target.value, 'contains')" placeholder="Search estimate" />
+            </span>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Est. Id</th>
+            <th pSortableColumn="customer">Customer <p-sortIcon field="customer"></p-sortIcon> </th>
+            <th>Status</th>
+            <th>Amount</th>
+            <th pSortableColumn="estimateDate">Date <p-sortIcon field="estimateDate"></p-sortIcon> </th>
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-estData>
+          <tr>
+            <td> {{estData.firstEstimateId}} {{estData.secondEstimateId}} </td>
+            <td [routerLink]="['5']"> {{estData.customer}} </td>
+            <td> {{estData.status}} </td>
+            <td> {{estData.estimateTotal}} </td>
+            <td> {{estData.estimateDate | date }} </td>
+            <td> icon </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+    <!-- <div class="mobile">
+      <p-tabView>
+        <p-tabPanel>
+
+        </p-tabPanel>
+      </p-tabView>
+    </div> -->
+
+    <ng-template #noEstimate>
+      <div class="estimates__main--welcome">
+        <h3>A professional feel to <br> seal the deal</h3>
+        <div><h4>No estimate yet. Why not <a [routerLink]="['add']">create an estimate</a></h4></div>
+      </div>
+    </ng-template>
+  </main>
+</div>

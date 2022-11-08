@@ -1,0 +1,94 @@
+@use "../../../styles.scss" as *;
+
+.p-inputtext {
+  width: 100%;
+}
+
+.container {
+  padding: $mp4;
+  height: max-content;
+
+  .add-estimate__header {
+    font-size: $fs8;
+    font-weight: 800;
+    margin: $mp5 0;
+  }
+
+  .add-estimate-form {
+    .p-inputtext {
+      font-size: $fs3;
+      padding: $mp3 $mp2;
+    }
+
+    .container:not(:last-child) {
+      border-bottom: solid $c-grey5 2px;
+    }
+
+    .container {
+      margin-top: $mp5;
+      @media (max-width: $tab-bp) {
+        margin-top: $mp3;
+      }
+
+      & > h4 {
+        font-size: $fs6;
+      }
+
+      .wrapper {
+        margin: $mp3 auto;
+        width: min(600px, 100%);
+        display: flex;
+        flex-direction: column;
+        @media (max-width: $tab-bp) {
+          margin-top: $mp2;
+        }
+
+        span {
+          margin-top: $mp4;
+          display: flex;
+          flex-direction: column;
+          gap: $mp1;
+          width: 100%;
+          @media (max-width: $tab-bp) {
+            margin-top: $mp2;
+          }
+
+          label {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+
+    .flex {
+      display: flex;
+      gap: $mp3;
+      align-items: center;
+      span, div {
+        width: 100%;
+      }
+    }
+
+    .billing-flex {
+      @media (max-width: $tab-bp) {
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+.add-estimate__cta {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-block: $mp6;
+
+  .p-button {
+    width: 40%;
+    padding: $mp3 $mp5;
+    @media (max-width: $tab-bp) {
+      width: 60%;
+      font-size: $mp4;
+    }
+  }
+}

@@ -1,27 +1,24 @@
 @use  "../../../styles.scss" as *;
 
 .estimates {
-  min-height: 100%;
+  height: max-content;
   display: flex;
   flex-direction: column;
-  padding-top: $mp7;
-  @media (min-width: $desktop-bp) {
-    padding-top: 0;
-  }
+  padding-block: $mp4;
+  gap: $mp4;
 
   .p-inputtext {
-    font-size: $fs4;
+    font-size: $fs3;
     padding: $mp2 $mp6;
   }
 
   &__header {
-    border-bottom: solid 1px $c-grey4;
-    padding: $mp5 $mp3;
+    margin: $mp5 $mp3;
     display: flex;
     align-items: center;
     justify-content: space-between;
     @media (min-width: $desktop-bp) {
-      padding: $mp5;
+      margin: $mp5 0;
     }
 
     & > h3 {
@@ -38,6 +35,10 @@
 
     & fa-icon {
       font-size: $fs6;
+      background-color: blue;
+      color: white;
+      padding: $mp3;
+      border-radius: 10px;
       @media (min-width: $desktop-bp) {
         display: none;
       }
@@ -59,15 +60,95 @@
         font-size: $fs8;
         text-align: center;
       }
-
-      & > div {
-      }
     }
 
     .desktop {
-      @media (max-width: $tab-bp) {
-        display: none;
+      display: none;
+      @media (min-width: $desktop-bp) {
+        display: initial;
+      }
+
+      tr {
+        .p-button {
+          margin-inline: $mp1;
+        }
+      }
+
+      .all-estimate__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
       }
     }
+
+    .mobile {
+      @media (min-width: $desktop-bp) {
+        display: none;
+      }
+
+      td {
+        border: none;
+      }
+
+      &__estimate {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &--id {
+          width: 60%;
+
+          h3 {
+            font-size: $fs6;
+          }
+
+          p {
+            color: $c-grey2;
+          }
+        }
+
+        &--avatar {
+          background-color: lightblue;
+          color: blue;
+          padding: $mp4;
+          border-radius: $mp3;
+        }
+
+        &--balance {
+          text-align: center;
+        }
+
+        &--more {
+          padding: $mp3;
+        }
+      }
+    }
+  }
+}
+
+:host ::ng-deep {
+  .p-datatable {
+    .p-datatable-header {
+      background-color: white;
+      border: none;
+    }
+  }
+
+  .p-tabview-panels {
+    padding: $mp1 0;
+  }
+
+  .p-tabview-nav {
+    background-color: rgba(159, 225, 255, 0.129);
+    padding: $mp2 $mp3;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    border-radius: 15px;
+  }
+
+  .tabpanel {
+    width: 50%;
   }
 }

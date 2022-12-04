@@ -3,7 +3,7 @@
     <h3 class="add-invoice__header--title">{{title}}</h3>
   </div>
 
-  <form novalidate [formGroup]="invoiceForm" class="invoice-form">
+  <!-- <form novalidate [formGroup]="invoiceForm" class="invoice-form">
     <div class="invoice-form__info">
       <div class="invoice-form__info__flex">
         <span class="invoice-form__info__customer">
@@ -111,17 +111,30 @@
         <textarea id="notes" rows="5" cols="30" pInputTextarea [autoResize]="true" formControlName="notes"></textarea>
         <label for="notes"> Notes / Terms </label>
       </div>
+      <div class="payment-section">
+        <p> Want to get paid faster? <a href="/">Set up Payment Gateway</a> </p>
+        <div class="payment-confirmation">
+          <p-checkbox [binary]="true" inputId="confirm-payment"></p-checkbox>
+          <label for="confirm-payment"> I have received the payment </label>
+        </div>
+        <span> <p> How much? </p> <input pInputText type="text"></span>
+      </div>
     </div>
-  </form>
+  </form> -->
+
+  <app-transaction-form
+  [customers]="Invoicecustomers"
+  [transactionForm]="invoiceForm"
+  ></app-transaction-form>
 
   <div class="add-invoice__cta">
     <div>
       <button pButton pRipple type="button" label="Cancel" class="p-button-rounded" (click)="saveForm()"></button>
       <button pButton pRipple type="button" label="Clear all" class="p-button-rounded" (click)="resetAll()"></button>
     </div>
-    <button pButton pRipple type="button" label="Print or Preview" class="p-button-rounded" (click)="resetInvoiceItems()" [disabled]="!invoiceForm.valid"></button>
+    <button pButton pRipple type="button" label="Print or Preview" class="p-button-rounded" (click)="popInvoiceDialog()" [disabled]="!invoiceForm.valid"></button>
     <div>
-      <button pButton pRipple type="button" label="Save" class="p-button-rounded" (click)="addInvoiceItem()" [disabled]="!invoiceForm.valid"></button>
+      <button pButton pRipple type="button" label="Save" class="p-button-rounded" (click)="popInvoiceDialog()" [disabled]="!invoiceForm.valid"></button>
       <button pButton pRipple type="button" label="Save and Send" class="p-button-rounded" (click)="popInvoiceDialog()" [disabled]="!invoiceForm.valid"></button>
     </div>
     <div class="mobile">

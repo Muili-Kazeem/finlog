@@ -1,0 +1,119 @@
+@use "../../../styles.scss" as *;
+
+.signup {
+  display: flex;
+
+  &__hero {
+    display: none;
+    padding: $mp8 $mp7;
+    background: linear-gradient(to top, darkblue, blue);
+    @media (min-width: $desktop-bp) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    & > div {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero__logo {
+      width: 100px;
+    }
+
+    &__info {
+      & > h3 {
+        font-size: $fs11;
+        color: white;
+        margin-block: $mp4;
+      }
+
+      & > p {
+        font-size: $fs7;
+        color: lightblue;
+      }
+    }
+  }
+
+  &__form {
+    padding: $mp7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    .signin__cta {
+      align-self: flex-end;
+      margin-bottom: $mp5;
+    }
+
+    & > .fluid {
+      width: min(400px, 90%);
+      display: flex;
+      flex-direction: column;
+      gap: $mp4;
+    }
+
+    &__header {
+      margin-bottom: $mp4;
+      align-items: center;
+      text-align: center;
+
+      img {
+        margin-bottom: $mp6;
+        width: 150px;
+      }
+
+      h3 {
+        font-size: $fs8;
+        margin-bottom: $mp1;
+      }
+
+      h4 {
+        font-size: $fs4;
+      }
+    }
+
+    &__username, &__password {
+      h5 {
+        font-size: $fs3;
+        margin-bottom: $mp1;
+      }
+
+      .p-inputtext {
+        width: 100%;
+        font-size: $fs3;
+        padding: $mp3 $mp2;
+      }
+    }
+
+    .p-button {
+      margin-top: $mp1;
+      width: 100%;
+      padding: $mp3 0;
+    }
+
+    &__alternatives {
+      align-self: center;
+        img {
+          margin-inline: $mp2;
+          padding: $mp2;
+          border-radius: 5px;
+          border: solid rgba(86, 86, 86, 0.111) 1px;
+          width: 40px;
+        }
+    }
+  }
+}
+
+:host ::ng-deep .p-component {
+  width: 100%;
+   .p-password, .p-password input {
+    width: 100%;
+   }
+}
+

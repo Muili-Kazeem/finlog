@@ -1,0 +1,91 @@
+@use "../../../styles.scss" as *;
+
+.client {
+  padding-top: $mp7;
+  display: grid;
+  gap: $mp4;
+  @media (min-width: $desktop-bp) {
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: min-content auto;
+  }
+
+  & .p-button {
+    padding: $mp2 $mp4;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $mp5 $mp3;
+    @media (min-width: $desktop-bp) {
+      grid-column: 1/4;
+      grid-row: 1/2;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: $mp2;
+    @media (min-width: $desktop-bp) {
+      grid-column: 1/2;
+      grid-row: 2/3;
+    }
+  }
+
+  &__overview {
+    @media (min-width: $desktop-bp) {
+      grid-column: 2/4;
+      grid-row: 2/3;
+    }
+
+    & > h3 {
+      font-size: $fs6;
+      margin-block: $mp4;
+    }
+
+    & > .overview-grid {
+      display: grid;
+      gap: $mp4;
+      @media (min-width: $desktop-bp) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      & > div {
+        padding: $mp3;
+        border: solid rgba(180, 180, 180, 0.301) 1px;
+        border-radius: $mp3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        & > p:nth-child(2) {
+          font-size: $fs9;
+          padding: $mp4;
+        }
+
+        & .p-button {
+          padding: $mp2 $mp4;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+// & .p-button, .p-splitbutton {
+//   font-size: $fs4;
+//   padding: $mp3 $mp6;
+// }
+
+// :host ::ng-deep {
+//   .p-datatable {
+//     tr th:nth-child(2), tr td:nth-child(2) {
+//       text-align: end;
+//     }
+//   }
+// }

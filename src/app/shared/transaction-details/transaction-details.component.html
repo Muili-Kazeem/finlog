@@ -1,0 +1,37 @@
+<div class="estimate__detail">
+  <div>
+    <div class="estimate__info side">
+      <div><span>Estimate:</span> <h3>#000234</h3></div>
+      <div><span>Bill to:</span> <h3>Baba Rasaki</h3></div>
+      <div><span>Amount Due:</span> <h3>2 bay</h3></div>
+      <div><span>estimate date:</span> <h3>Ajanbadi</h3></div>
+      <div><span>Payment due:</span> <h3>Otunla</h3></div>
+      <div><span>Status:</span> <h3>Sent / Paid</h3></div>
+    </div>
+
+    <div class="estimate-items__info side">
+      <p-table styleClass="p-datatable-lg p-datatable-striped" [value]="estimates" dataKey="id" responsiveLayout="scroll"
+        [paginator]="true" [rows]="5" [alwaysShowPaginator]="false" [showJumpToPageDropdown]="true" [showPageLinks]="false">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>ITEMS</th>
+            <th>AMOUNT</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-estData>
+          <tr>
+            <td> <div> <span>{{estData.firstEstimateId}} </span> ({{estData.estimateItems[0].quantity}} x {{estData.estimateItems[0].rate}}) </div> </td>
+            <td> {{estData.estimateTotal}} </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+
+  <div class="estimate__total">
+    <div><span>Subtotal:</span> <h3>#2 Milla</h3></div>
+    <div><span>Tax:</span> <h3>Owo</h3></div>
+    <div><span>Discount:</span> <h3>Owo</h3></div>
+    <div><span>Total:</span> <h3>Owo Po</h3></div>
+  </div>
+</div>

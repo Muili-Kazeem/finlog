@@ -128,6 +128,10 @@
           </div>
         </div>
       </div>
+      <div class="table-footer p-float-label">
+        <textarea id="notes" rows="5" cols="30" pInputTextarea [autoResize]="true" formControlName="notes"></textarea>
+        <label for="notes"> Notes / Terms </label>
+      </div>
     </div>
   </form>
 
@@ -138,7 +142,7 @@
     </div>
     <button pButton pRipple type="button" label="Print or Preview" class="p-button-rounded" (click)="addEstimateItem()" [disabled]="!estimateForm.valid"></button>
     <div>
-      <button pButton pRipple type="button" label="Save" class="p-button-rounded" (click)="addEstimateItem()" [disabled]="!estimateForm.valid"></button>
+      <button pButton pRipple type="button" label="Save" class="p-button-text" (click)="addEstimateItem()" [disabled]="!estimateForm.valid"></button>
       <button pButton pRipple type="button" label="Save and Send" class="p-button-rounded" (click)="popEstimateDialog()" [disabled]="!estimateForm.valid"></button>
     </div>
     <div class="mobile">

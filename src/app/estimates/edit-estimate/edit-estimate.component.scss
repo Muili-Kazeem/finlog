@@ -1,0 +1,339 @@
+@use "../../../styles.scss" as *;
+
+.p-inputtext {
+  width: 100%;
+}
+
+.container {
+  padding: $mp2;
+  height: max-content;
+
+  .add-estimate__header {
+    font-size: $fs7;
+    font-weight: 800;
+    margin: $mp3 0;
+    @media (min-width: $desktop-bp) {
+      font-size: $fs8;
+      margin: $mp7 0 $mp4 0;
+    }
+  }
+
+  .estimate-form {
+    .estimate-id {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .estimate-total {
+        display: none;
+        @media (min-width: $desktop-bp) {
+          display: initial;
+        }
+
+        &__amount {
+          font-size: $fs9;
+        }
+      }
+
+      &__preview {
+        margin: $mp2 0;
+        font-size: $fs5;
+        @media (min-width: $desktop-bp) {
+          font-size: $fs7;
+        }
+      }
+
+      &__form {
+        display: flex;
+        gap: $mp2;
+        @media (min-width: $desktop-bp) {
+          margin: $mp4 0;
+        }
+
+        span {
+          width: min(200px, 100%);
+        }
+
+        .p-inputtext {
+          font-size: $fs5;
+          @media (min-width: $desktop-bp) {
+            font-size: $fs6;
+            padding: $mp4 $mp3;
+          }
+        }
+      }
+    }
+
+    &__info {
+      padding: $mp4 0;
+      margin: $mp4 0;
+      border-top: solid $c-grey4 1px;
+
+      .sides {
+        display: flex;
+        gap: $mp4;
+        flex-direction: column;
+        @media (min-width: $desktop-bp) {
+          flex-direction: row;
+        }
+      }
+
+      &__flex {
+        display: flex;
+        flex-direction: column;
+        gap: $mp4;
+        width: 100%;
+        @media (min-width: $desktop-bp) {
+          width: 50%;
+        }
+
+        &.right {
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+
+          & span:not(:last-child) {
+            width: 45%;
+            @media (min-width: $desktop-bp) {
+              width: 100%;
+            }
+          }
+        }
+
+        & > span {
+          width: 100%;
+          display: flex;
+          gap: $mp2;
+          flex-direction: column;
+          @media (min-width: $desktop-bp) {
+            flex-direction: row;
+          }
+
+          & > label {
+            align-self: start;
+            @media (min-width: $desktop-bp) {
+              width: 30%;
+            }
+          }
+
+          & > :not(label) {
+            @media (min-width: $desktop-bp) {
+              width: 70%;
+            }
+          }
+        }
+
+        & label {
+          font-size: $fs4;
+        }
+      }
+
+      .right > span > label {
+        @media (min-width: $desktop-bp) {
+          text-align: end;
+        }
+      }
+    }
+
+    .p-inputtext {
+      font-size: $fs4;
+      padding: $mp3 $mp2;
+    }
+
+  }
+
+  .main-table {
+    border: solid $c-grey5 1px;
+    border-radius: 8px;
+    margin-block: $mp4;
+    padding: $mp3 $mp2;
+
+    .table-header-mobile {
+      font-weight: 700;
+      margin-inline: $mp2;
+      font-size: $fs6;
+      @media (min-width: $desktop-bp) {
+        display: none;
+      }
+    }
+
+    .table-header {
+      display: none;
+      @media (min-width: $desktop-bp) {
+        display: initial;
+      }
+      .row {
+        font-weight: map-get($font-weights, bold);
+      }
+    }
+
+    .row {
+      padding: $mp2;
+      border-bottom: solid $c-grey5 2px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      @media (min-width: $desktop-bp) {
+        flex-direction: row;
+        gap: $mp2;
+      }
+
+      .col:not(.q-r) {
+        width: 100%;
+        margin-top: $mp5;
+        @media (min-width: $desktop-bp) {
+          margin: 0;
+        }
+
+        .p-inputtext {
+          padding: $mp2;
+        }
+
+        label {
+          @media (min-width: $desktop-bp) {
+            display: none;
+          }
+        }
+      }
+
+      .col.col-no {
+        display: none;
+        @media (min-width: $desktop-bp) {
+          width: 3%;
+          display: initial;
+        }
+      }
+
+      .col.col-item {
+        @media (min-width: $desktop-bp) {
+          width: 17%;
+        }
+      }
+
+      .col.col-description {
+        @media (min-width: $desktop-bp) {
+          width: 30%;
+        }
+      }
+
+      .col.q-r {
+        display: flex;
+        gap: $mp3;
+        @media (min-width: $desktop-bp) {
+          width: 22%;
+        }
+      }
+
+      .col.col-discount {
+        @media (min-width: $desktop-bp) {
+          width: 10%;
+        }
+      }
+
+      .col.col-amount {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 80%;
+        @media (min-width: $desktop-bp) {
+          width: 15%;
+        }
+      }
+    }
+
+    .calculations.line-buttons {
+      margin-block: $mp3;
+      @media (min-width: $desktop-bp) {
+        display: flex;
+        justify-content: space-between;
+        gap: $mp5;
+      }
+
+      .line-buttons {
+        margin: $mp3 auto;
+        text-align: center;
+        @media (min-width: $desktop-bp) {
+          margin: initial;
+          text-align: initial;
+        }
+        .p-button {
+          margin-right: $mp4;
+        }
+      }
+
+      .calculations {
+        margin-top: $mp5;
+        @media (min-width: $desktop-bp) {
+          margin: 0;
+          width: 40%;
+        }
+
+        & > div {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: $mp2;
+
+          .p-inputtext {
+            font-size: $fs2;
+            padding: $mp2;
+          }
+
+          & > span:first-child {
+            width: 30%;
+            align-self: center;
+          }
+
+          & > span:nth-child(2) {
+            width: 30%;
+          }
+        }
+
+        & > div:last-child {
+          border-top: solid $c-grey5 2px;
+          margin-top: $mp3;
+          padding-top: $mp3;
+
+          & > span:first-child {
+          }
+
+          & > span:nth-child(2) {
+          }
+        }
+      }
+
+      .table-footer {
+        margin: auto;
+        margin-top: $mp7;
+        width: 95%;
+      }
+    }
+  }
+}
+
+.add-estimate__cta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-block: $mp6;
+
+  & > div:not(.mobile), & > .p-button {
+    display: none;
+    @media (min-width: $desktop-bp) {
+      display: initial;
+    }
+  }
+
+  .p-button {
+    padding: $mp3 $mp5;
+    margin-inline: $mp1;
+  }
+
+  & > .mobile {
+    width: 100%;
+    text-align: center;
+    @media (min-width: $desktop-bp) {
+      display: none;
+    }
+  }
+}

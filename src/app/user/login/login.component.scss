@@ -1,0 +1,127 @@
+@use "../../../styles.scss" as *;
+
+.login {
+  display: flex;
+
+  &__hero {
+    display: none;
+    padding: $mp9 $mp7;
+    background: linear-gradient(to top, darkblue, blue);
+    @media (min-width: $desktop-bp) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    & > div {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero__logo {
+      width: 80px;
+    }
+
+    &__info {
+      & > h3 {
+        font-size: $fs11;
+        color: white;
+        margin-block: $mp4;
+      }
+
+      & > p {
+        font-size: $fs7;
+        color: lightblue;
+      }
+    }
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: $mp5;
+
+    & > .fluid {
+      width: min(350px, 90%);
+      display: flex;
+      flex-direction: column;
+      gap: $mp2;
+    }
+
+    &__header {
+      align-self: center;
+      margin-bottom: $mp2;
+      img {
+        width: 150px;
+        margin-bottom: $mp5;
+      }
+
+      h4 {
+        font-size: $fs10;
+      }
+    }
+
+    &__google {
+      align-self: center;
+      display: flex;
+      gap: $mp3;
+      align-items: center;
+      padding: $mp2 $mp4;
+      border-radius: 5px;
+      background-color: rgba(169, 169, 169, 0.202);
+      img {
+        width: 20px;
+      }
+
+      p {
+        color: black;
+      }
+    }
+
+    &__username, &__password {
+      margin-bottom: $mp4;
+      h5 {
+        font-size: $fs3;
+        margin-bottom: $mp1;
+      }
+
+      .p-inputtext {
+        width: 100%;
+        font-size: $fs3;
+        padding: $mp3 $mp2;
+      }
+    }
+
+    .p-button {
+      width: 100%;
+      margin: $mp5 auto;
+      padding: $mp3 0;
+    }
+
+    &__remember-me {
+      margin-top: -$mp2;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .signup__cta {
+      align-self: center;
+      width: max-content;
+      margin-top: $mp5;
+    }
+  }
+
+}
+
+:host ::ng-deep .p-component {
+  width: 100%;
+   .p-password, .p-password input {
+    width: 100%;
+   }
+}

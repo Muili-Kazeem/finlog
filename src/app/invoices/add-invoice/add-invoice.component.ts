@@ -12,17 +12,17 @@ import { SendInvoiceDialogComponent } from '../send-invoice-dialog/send-invoice-
 export class AddInvoiceComponent implements OnInit, OnDestroy {
 
   title: string = "New Invoice";
-  customers: String[] = ["Shalewa", "Adenike", "Abike"]
+  Invoicecustomers: String[] = ["Shalewa", "Balqees", "Abike", "Rasaqi"]
   filteredCustomers!: String[];
   ref!: DynamicDialogRef;
 
-  get invoiceItems(): FormArray {
-    return <FormArray>this.invoiceForm.get("invoiceItems")
-  }
+  // get invoiceItems(): FormArray {
+  //   return <FormArray>this.invoiceForm.get("invoiceItems")
+  // }
 
   actionOptions = [
     { label: "Save", icon: '', command: () => { this.popInvoiceDialog() }},
-    { label: "Print or Preview", icon: '', command: () => { this.addInvoiceItem() }},
+    { label: "Print or Preview", icon: '', command: () => { this.popInvoiceDialog() }},
     { label: "Clear All", icon: '', command: () => { this.resetAll() }},
     { label: "Cancel", icon: '', command: () => { this.saveForm() }}
   ]
@@ -51,13 +51,13 @@ export class AddInvoiceComponent implements OnInit, OnDestroy {
     })
   }
 
-  addInvoiceItem(): void {
-    this.invoiceItems.push(this.buildInvoiceItemsGroup());
-  }
+  // addInvoiceItem(): void {
+  //   this.invoiceItems.push(this.buildInvoiceItemsGroup());
+  // }
 
-  removeInvoiceItem(index: Number): void {
-    this.invoiceItems.removeAt(Number(index));
-  }
+  // removeInvoiceItem(index: Number): void {
+  //   this.invoiceItems.removeAt(Number(index));
+  // }
 
   buildInvoiceItemsGroup(): FormGroup {
     return this.fb.group({
@@ -75,28 +75,28 @@ export class AddInvoiceComponent implements OnInit, OnDestroy {
     console.log(this.invoiceForm);
   }
 
-  filterCustomer(event: { query: any; }) {
-    let filtered: any[] = [];
-    let query = event.query;
+  // filterCustomer(event: { query: any; }) {
+  //   let filtered: any[] = [];
+  //   let query = event.query;
 
-    for(let i=0; i < this.customers.length; i++) {
-      let customer = this.customers[i];
-      if (customer.toLowerCase().indexOf(query.toLowerCase()) == 0) {
-        filtered.push(customer);
-      }
-    }
-    this.filteredCustomers = filtered;
-  }
+  //   for(let i=0; i < this.Invoicecustomers.length; i++) {
+  //     let customer = this.Invoicecustomers[i];
+  //     if (customer.toLowerCase().indexOf(query.toLowerCase()) == 0) {
+  //       filtered.push(customer);
+  //     }
+  //   }
+  //   this.filteredCustomers = filtered;
+  // }
 
   resetAll() {
     this.invoiceForm.reset();
   }
 
-  resetInvoiceItems() {
-    this.invoiceItems.reset();
-    this.invoiceItems.clear();
-    this.addInvoiceItem();
-  }
+  // resetInvoiceItems() {
+  //   this.invoiceItems.reset();
+  //   this.invoiceItems.clear();
+  //   this.addInvoiceItem();
+  // }
 
   popInvoiceDialog() {
     this.ref = this.dialogService.open(SendInvoiceDialogComponent, {

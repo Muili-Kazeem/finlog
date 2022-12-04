@@ -1,0 +1,50 @@
+<div class="login container">
+
+  <div class="login__hero">
+    <div>
+      <div class="login__hero__info">
+        <h3> Your <br/> Bookkeeping <br/> in one place. </h3>
+        <p> Keep online and offline transactions in sync </p>
+      </div>
+      <img src="../../../assets/SVGs/Finlog contrast.svg" alt="Finlog Logo" class="hero__logo">
+    </div>
+  </div>
+
+  <div class="login__form">
+    <div class="fluid">
+      <div class="login__form__header">
+        <img src="../../../assets/SVGs/Finlog.svg" alt="Finlog Logo">
+        <h4>Log in</h4>
+      </div>
+      <a class="login__form__google">
+        <img src="../../../assets/PNGs/google.png" alt="google-signin"> <p>Sign in with Google</p>
+      </a>
+      <p-divider align="center">
+        <p>or</p>
+      </p-divider>
+      <div class="form">
+        <div class="login__form__username">
+          <h5>Email</h5>
+          <input pInputText type="text">
+        </div>
+        <div class="login__form__password">
+          <h5>Password</h5>
+          <p-password [showClear]="true" [feedback]="false"></p-password>
+        </div>
+        <div class="login__form__remember-me">
+          <div class="remember-me">
+            <p-checkbox [binary]="true" inputId="rememberMe"></p-checkbox>
+            <label for="rememberMe"> Remember me</label>
+          </div>
+          <a href="/">Forgot password?</a>
+        </div>
+        <button pButton pRipple type="button" label="Sign in" class="signup__form__btn"></button>
+      </div>
+      <div class="signup__cta">
+        <p>Don't have an account? <a href="/">Sign Up</a></p>
+      </div>
+
+    </div>
+  </div>
+
+</div>

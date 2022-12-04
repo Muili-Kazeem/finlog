@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisVertical, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { EstimateServiceService } from 'src/app/estimate-service.service';
 
 import { IClientEstimate } from 'src/app/model';
@@ -12,6 +12,7 @@ import { IClientEstimate } from 'src/app/model';
 export class EstimatesComponent implements OnInit {
   title: string = "Estimates";
   faAdd = faPlus;
+  faDots = faEllipsisVertical;
 
   estimates!: IClientEstimate[];
 
@@ -20,6 +21,10 @@ export class EstimatesComponent implements OnInit {
   ngOnInit(): void {
     this.estimates = this.estimateService.getEstimates()
     console.log(this.estimates);
+  }
+
+  deleteClient(id: number): void {
+    console.log(id)
   }
 
 }

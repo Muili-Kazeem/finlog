@@ -1,44 +1,50 @@
 @use "../../../styles.scss" as *;
 
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: $mp3;
-
   & > .content {
-    display: flex;
-    gap: $mp5;
+    margin-block: $mp4;
+    @media (min-width: $desktop-bp) {
+      display: flex;
+      gap: $mp5;
+      margin: 0;
+    }
   }
 
   & .content > div {
     width: 100%;
   }
 
-  & .left-form > form {
-    display: flex;
-    flex-direction: column;
-    gap: $mp6;
-
-    & span {
+  & .left-form {
+    margin-block: $mp4;
+    & > form {
       display: flex;
       flex-direction: column;
-      gap: $mp1;
+      gap: $mp6;
 
-      & label {
-        font-weight: 700;
+      & span {
+        display: flex;
+        flex-direction: column;
+        gap: $mp1;
+
+        & label {
+          font-weight: 600;
+        }
       }
-    }
 
-    .p-inputtext {
-      font-size: $fs4;
-      padding: $mp3 $mp2;
+      .p-inputtext {
+        font-size: $fs4;
+        padding: $mp3 $mp2;
+      }
     }
   }
 
   & .cta {
     display: flex;
     gap: $mp4;
-    justify-content: flex-end;
+    justify-content: center;
+    @media (min-width: $desktop-bp) {
+      justify-content: flex-end;
+    }
   }
 
   .p-button {

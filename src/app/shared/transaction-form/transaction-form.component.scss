@@ -1,0 +1,234 @@
+@use "../../../styles.scss" as *;
+
+.p-inputtext {
+  width: 100%;
+}
+
+.transaction-form {
+  border: solid red 2px;
+  &__info {
+    @media (min-width: $desktop-bp) {
+      margin: 0 0 $mp2 0;
+      display: flex;
+      justify-content: space-between;
+      gap: $mp2;
+      align-items: center;
+    }
+
+    &__flex{
+      display: flex;
+      flex-direction: column;
+      gap: $mp3;
+      margin: $mp3 0;
+      @media (min-width: $desktop-bp) {
+        gap: $mp4;
+      }
+
+      & > span {
+        display: flex;
+        flex-direction: column;
+        gap: $mp1;
+        @media (min-width: $desktop-bp) {
+          width: 100%;
+        }
+      }
+    }
+
+    &__flex.calendar {
+      flex-direction: row;
+      @media (min-width: $desktop-bp) {
+        flex-direction: column;
+      }
+    }
+  }
+
+  .p-inputtext {
+    font-size: $fs4;
+    padding: $mp3 $mp2;
+  }
+}
+
+.main-table {
+  border: solid $c-grey5 1px;
+  border-radius: 8px;
+  margin-block: $mp4;
+  padding: $mp3 $mp2;
+
+  .table-header-mobile {
+    font-weight: 700;
+    margin-inline: $mp2;
+    font-size: $fs6;
+    @media (min-width: $desktop-bp) {
+      display: none;
+    }
+  }
+
+  .table-header {
+    @media (max-width: $tab-bp) {
+      display: none;
+    }
+    .row {
+      font-weight: map-get($font-weights, bold);
+    }
+  }
+
+  .row {
+    padding: $mp2;
+    border-bottom: solid $c-grey5 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    @media (min-width: $desktop-bp) {
+      flex-direction: row;
+      gap: $mp2;
+    }
+
+    .col {
+      width: 100%;
+      margin-top: $mp5;
+      @media (min-width: $desktop-bp) {
+        margin: 0;
+      }
+
+      .p-inputtext {
+        padding: $mp2;
+      }
+
+      label {
+        @media (min-width: $desktop-bp) {
+          display: none;
+        }
+      }
+    }
+
+    .col.col-no {
+      display: none;
+      @media (min-width: $desktop-bp) {
+        width: 3%;
+        display: initial;
+      }
+    }
+
+    .col.col-product {
+      @media (min-width: $desktop-bp) {
+        width: 17%;
+      }
+    }
+
+    .col.col-description {
+      @media (min-width: $desktop-bp) {
+        width: 30%;
+      }
+    }
+
+    .col.q-r {
+      display: flex;
+      gap: $mp3;
+      @media (min-width: $desktop-bp) {
+        width: 22%;
+      }
+    }
+
+    .col.col-discount {
+      @media (min-width: $desktop-bp) {
+        width: 10%;
+      }
+    }
+
+    .col.col-amount {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 80%;
+      @media (min-width: $desktop-bp) {
+        width: 15%;
+      }
+    }
+  }
+
+  .calculations.line-buttons {
+    margin: $mp3 0 $mp7 0;
+    @media (min-width: $desktop-bp) {
+      display: flex;
+      justify-content: space-between;
+      gap: $mp5;
+    }
+
+    .line-buttons {
+      margin: $mp3 auto;
+      text-align: center;
+      @media (min-width: $desktop-bp) {
+        margin: initial;
+        text-align: initial;
+      }
+      .p-button {
+        margin-right: $mp4;
+      }
+    }
+
+    .calculations {
+      @media (min-width: $desktop-bp) {
+        margin: 0;
+        width: 40%;
+      }
+
+      & > div {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: $mp2;
+
+        .p-inputtext {
+          font-size: $fs2;
+          padding: $mp2;
+        }
+
+        & > span:first-child {
+          width: 30%;
+          align-self: center;
+        }
+
+        & > span:nth-child(2) {
+          width: 30%;
+        }
+      }
+
+      & > div:last-child {
+        border-top: solid $c-grey5 2px;
+        margin-top: $mp3;
+        padding-top: $mp3;
+
+        & > span:first-child {
+        }
+
+        & > span:nth-child(2) {
+        }
+      }
+    }
+  }
+
+  .table-footer, .payment-section {
+    margin: auto;
+    width: 95%;
+  }
+
+  .payment-section {
+    & > p {
+      margin-block: $mp3;
+    }
+
+    .payment-confirmation {
+      display: flex;
+      align-items: center;
+      gap: $mp2;
+      margin-block: $mp2;
+    }
+
+    span {
+      width: max-content;
+      .p-inputtext {
+        width: initial;
+      }
+    }
+  }
+}

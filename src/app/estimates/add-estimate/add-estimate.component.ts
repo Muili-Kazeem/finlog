@@ -47,6 +47,7 @@ export class AddEstimateComponent implements OnInit, OnDestroy {
       tax: '',
       discount: '',
       estimateTotal: '',
+      notes: '',
     })
   }
 

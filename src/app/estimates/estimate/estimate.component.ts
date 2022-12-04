@@ -15,11 +15,10 @@ export class EstimateComponent implements OnInit {
   estimates!: IClientEstimate[];
   ref!: DynamicDialogRef;
 
-  constructor( private estimateService: EstimateServiceService, public dialogService: DialogService) { }
+  constructor( private estimateService: EstimateServiceService, public dialogService: DialogService ) { }
 
   ngOnInit(): void {
     this.estimates = this.estimateService.getEstimates()
-    console.log(this.estimates);
   }
 
   popEstimateDialog() {

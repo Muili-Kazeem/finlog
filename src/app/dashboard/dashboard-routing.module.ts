@@ -33,6 +33,7 @@ const routes: Routes = [
       { path: 'invoices/:id/edit', component: EditEstimateComponent },
       { path: 'clients', component: ClientsComponent },
       { path: 'clients/add', component: AddClientComponent },
+      { path: 'clients/:id', component: ClientComponent },
       { path: 'profile', component: ClientComponent },
     ]
   },

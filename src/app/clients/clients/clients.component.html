@@ -1,7 +1,7 @@
 <div class="clients container">
   <div class="clients__header">
     <h3 class="clients__header--title">{{title}}</h3>
-    <a [routerLink]="['../add']"><button pButton pRipple type="button" label="Create a client" class="p-button-rounded"></button> <fa-icon [icon]='faAdd'></fa-icon></a>
+    <a [routerLink]="['add']"><button pButton pRipple type="button" label="Create a client" class="p-button-rounded"></button> <fa-icon [icon]='faAdd'></fa-icon></a>
   </div>
 
   <main class="clients__main">
@@ -13,6 +13,7 @@
           [globalFilterFields]="['name', 'company', 'email', 'phone', 'balance', 'overdue']">
           <ng-template pTemplate="caption">
             <div>
+              <h3 class="m-3">All Clients</h3>
               <span class="p-input-icon-left ml-auto">
                 <i class="pi pi-search"></i>
                 <input pInputText type="text" (input)="tb.filterGlobal($any($event).target.value, 'contains')" placeholder="Search clients" />
@@ -31,7 +32,7 @@
           </ng-template>
           <ng-template pTemplate="body" let-client>
             <tr>
-              <td [routerLink]="['../profile']" > <div>{{ client.name }}</div> <div>{{ client.company }}</div></td>
+              <td [routerLink]="['5']" > <div>{{ client.name }}</div> <div>{{ client.company }}</div></td>
               <td> {{ client.email }}</td>
               <td> {{ client.balance }}</td>
               <td> {{ client.overdue }}</td>

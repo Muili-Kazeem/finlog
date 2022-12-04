@@ -1,0 +1,118 @@
+<form novalidate [formGroup]="transactionForm" class="transaction-form">
+  <div class="transaction-form__info">
+    <div class="transaction-form__info__flex">
+      <span class="transaction-form__info__customer">
+        <label for="customer"> Customer </label>
+        <p-autoComplete id="customer" formControlName="customer" [suggestions]="filteredCustomers" (completeMethod)="filterCustomer($event)" [dropdown]="true"></p-autoComplete>
+      </span>
+      <span class="transaction-form__info__billing-address">
+        <label for="billingAddress"> Billing Address </label>
+        <textarea id="billingAddress" rows="5" cols="30" pInputTextarea [autoResize]="true" formControlName="billingAddress"></textarea>
+      </span>
+    </div>
+    <div class="transaction-form__info__flex calendar">
+      <span class="transaction-form__info__transaction-date">
+        <label for="transactionDate"> transaction Date </label>
+        <p-calendar inputId="transactionDate" dateFormat="dd-mm-yy" formControlName="transactionDate" [showIcon]="true" [showButtonBar]="true"></p-calendar>
+      </span>
+      <span class="transaction-form__info__expiry-date">
+        <label for="expiryDate"> Expiry Date </label>
+        <p-calendar inputId="expiryDate" dateFormat="dd-mm-yy" formControlName="expiryDate" [showIcon]="true" [showButtonBar]="true"></p-calendar>
+      </span>
+    </div>
+    <div class="transaction-form__info__flex">
+      <span class="transaction-form__info__transaction-number">
+        <label for="transactionNumber"> transaction number </label>
+        <input id="transactionNumber" type="text" pInputText formControlName="transactionNumber">
+      </span>
+      <span class="transaction-form__info__reference">
+        <label for="reference"> Reference </label>
+        <input id="reference" type="text" pInputText formControlName="reference">
+      </span>
+    </div>
+  </div>
+
+  <div class="main-table transaction-form__table">
+    <div class="table-header-mobile"> transaction Details </div>
+    <div class="table-header">
+      <div class="row">
+        <div class="col col-no"> # </div>
+        <div class="col col-product"> Product </div>
+        <div class="col col-description"> Description </div>
+        <div class="col q-r">
+          <div class="col col-quantity"> Quantity </div>
+          <div class="col col-rate"> Rate </div>
+        </div>
+        <div class="col col-discount"> Discount </div>
+        <div class="col col-amount"> Amount </div>
+      </div>
+    </div>
+    <div class="table-body">
+      <ng-container formArrayName="transactionItems" *ngFor="let transactionItem of transactionItems.controls let i=index">
+        <ng-container class="transactionInfo" [formGroupName]="i">
+          <div class="row">
+            <div class="col col-no"> {{ i + 1 }} </div>
+            <div class="col col-product p-float-label">
+              <input id="col-product" pInputText type="text" formControlName="item">
+              <label for="col-product">product</label>
+            </div>
+            <div class="col col-description p-float-label">
+              <input id="col-description" pInputText type="text" formControlName="description">
+              <label for="col-description">description</label>
+            </div>
+            <div class="col q-r">
+              <div class="col-quantity p-float-label">
+                <input id="col-quantity" pInputText type="text" formControlName="quantity">
+                <label for="col-quantity">quantity</label>
+              </div>
+              <div class="col-rate p-float-label">
+                <input id="col-rate" pInputText type="text" formControlName="rate">
+                <label for="col-rate">rate</label>
+              </div>
+            </div>
+            <div class="col col-discount p-float-label">
+                <input id="col-discount" pInputText type="text" formControlName="discount">
+                <label for="col-discount">discount</label>
+            </div>
+            <div class="col col-amount">
+              <p>$34699</p>
+              <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-text" (click)="removeTransactionItem(i)"></button>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
+    </div>
+    <div class="calculations line-buttons">
+      <div class="line-buttons">
+        <button pButton pRipple type="button" icon="pi pi-plus-circle" label="Add new item" class="p-button-text" (click)="addtransactionItem()"></button>
+        <button pButton pRipple type="button" icon="pi pi-times-circle" label="Clear all lines" class="p-button-text p-button-warning" (click)="resetTransactionItems()"></button>
+      </div>
+      <div class="calculations">
+        <div>
+          <span>Subtotal: </span> <span class="subtotal">#000</span>
+        </div>
+        <div>
+          <span>Tax: </span> <span class="tax"><input pInputText type="text" formControlName="tax"></span>
+        </div>
+        <div>
+          <span>Discount: </span> <span class="discount"><input pInputText type="text" formControlName="discount"></span>
+        </div>
+        <div>
+          <span>transaction Total: </span> <span class="total">#000</span>
+        </div>
+      </div>
+    </div>
+    <div class="table-footer p-float-label">
+      <textarea id="notes" rows="5" cols="30" pInputTextarea [autoResize]="true" formControlName="notes"></textarea>
+      <label for="notes"> Notes / Terms </label>
+    </div>
+    <div class="payment-section">
+      <p> Want to get paid faster? <a href="/">Set up Payment Gateway</a> </p>
+      <div class="payment-confirmation">
+        <p-checkbox [binary]="true" inputId="confirm-payment"></p-checkbox>
+        <label for="confirm-payment"> I have received the payment </label>
+      </div>
+      <span> <p> How much? </p> <input pInputText type="text"></span>
+    </div>
+  </div>
+</form>

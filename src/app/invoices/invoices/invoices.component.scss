@@ -1,8 +1,7 @@
 @use "../../../styles.scss" as *;
 
 .invoices {
-  border: solid red 1px;
-  min-height: 100%;
+  height: max-content;
   padding-block: $mp4;
   display: flex;
   flex-direction: column;
@@ -14,12 +13,12 @@
   }
 
   &__header {
-    padding: $mp5 $mp3;
+    margin: $mp5 $mp3;
     display: flex;
     align-items: center;
     justify-content: space-between;
     @media (min-width: $desktop-bp) {
-      padding: $mp5;
+      margin: $mp5 0;
     }
 
     & > h3 {
@@ -36,7 +35,7 @@
 
     & fa-icon {
       font-size: $fs6;
-      background-color: $c-grey2;
+      background-color: blue;
       color: white;
       padding: $mp3;
       border-radius: 10px;
@@ -87,15 +86,26 @@
         display: none;
       }
 
-      &__estimate {
+      td {
+        border: none;
+      }
+
+      &__invoice {
         width: 100%;
-        padding: $mp3 $mp1;
         display: flex;
         justify-content: space-between;
         align-items: center;
 
         &--id {
           width: 60%;
+
+          h3 {
+            font-size: $fs6;
+          }
+
+          p {
+            color: $c-grey2;
+          }
         }
 
         &--avatar {
@@ -112,24 +122,8 @@
         &--more {
           padding: $mp3;
         }
-
-        & > div {
-          h3 {
-            font-size: $fs6;
-            margin-bottom: $mp1;
-          }
-
-          p {
-            color: $c-grey2;
-          }
-        }
       }
     }
-  }
-
-  .footer {
-    justify-self: flex-end;
-    border: solid red 1px;
   }
 }
 

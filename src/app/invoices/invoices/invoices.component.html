@@ -6,7 +6,7 @@
 
   <main class="invoices__main">
     <div class="desktop">
-      <p-table *ngIf="estimates.length > 0; else noEstimate" styleClass="p-datatable-lg p-datatable-striped"
+      <p-table *ngIf="estimates.length > 0; else noInvoice" styleClass="p-datatable-lg p-datatable-striped"
         #tb1 [value]="estimates" dataKey="id" [autoLayout]="true" [resizableColumns]="true" columnResizeMode="expand"
         [paginator]="true" [rows]="5" [alwaysShowPaginator]="false" [showJumpToPageDropdown]="true" [showPageLinks]="false"
         [globalFilterFields]="['customer', 'estimateTotal', 'status', 'estimateDate', 'secondEstimateId', 'firstEstimateId']">
@@ -15,7 +15,7 @@
             <h3 class="m-3">All invoices</h3>
             <span class="p-input-icon-left">
               <i class="pi pi-search"></i>
-              <input pInputText type="text" (input)="tb1.filterGlobal($any($event).target.value, 'contains')" placeholder="Search estimate" />
+              <input pInputText type="text" (input)="tb1.filterGlobal($any($event).target.value, 'contains')" placeholder="Search invoice" />
             </span>
           </div>
         </ng-template>
@@ -23,9 +23,10 @@
           <tr>
             <th>Est. Id</th>
             <th pSortableColumn="customer">Customer <p-sortIcon field="customer"></p-sortIcon> </th>
-            <th>Status</th>
-            <th>Amount</th>
             <th pSortableColumn="estimateDate">Date <p-sortIcon field="estimateDate"></p-sortIcon> </th>
+            <th>Amount</th>
+            <th pSortableColumn="estimateDate">Due <p-sortIcon field="estimateDate"></p-sortIcon> </th>
+            <th>Status</th>
             <th></th>
           </tr>
         </ng-template>
@@ -33,9 +34,10 @@
           <tr>
             <td> {{estData.firstEstimateId}} {{estData.secondEstimateId}} </td>
             <td [routerLink]="['5']"> {{estData.customer}} </td>
-            <td> {{estData.status}} </td>
+            <td> {{estData.estimateDate | date }} </td>
             <td> {{estData.estimateTotal}} </td>
             <td> {{estData.estimateDate | date }} </td>
+            <td> {{estData.status}} </td>
             <td>
               <button pButton pRipple type="button" icon="pi pi-file-edit" class="p-button-rounded p-button-info p-button-text"></button>
               <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-text"></button>
@@ -47,7 +49,7 @@
 
     <div class="mobile">
       <p-tabView>
-        <p-tabPanel header="All invoices" headerStyleClass="all-invoices__tabpanel tabpanel">
+        <p-tabPanel header="All invoices" headerStyleClass="tabpanel">
           <p-table [value]="estimates" styleClass="p-datatable-lg p-datatable-striped" #tb
             dataKey="id" [autoLayout]="true" [paginator]="true" [rows]="7" [alwaysShowPaginator]="false" [showJumpToPageDropdown]="true"
             [showPageLinks]="false" [globalFilterFields]="['customer', 'estimateTotal', 'status', 'estimateDate', 'secondEstimateId', 'firstEstimateId']">
@@ -62,11 +64,11 @@
             <ng-template pTemplate="body" let-estimate>
               <tr>
                 <td>
-                  <div class="mobile__estimate">
-                    <div class="mobile__estimate--avatar"> {{ estimate.customer[0] }} </div>
-                    <div class="mobile__estimate--id" [routerLink]="['5']" > <h3>{{ estimate.customer }}</h3> <p>{{ estimate.estimateDate | date }}</p></div>
-                    <div class="mobile__estimate--balance"> <h3>{{ estimate.estimateTotal }}</h3> <p>Balance</p> </div>
-                    <div class="mobile__estimate--more" (click)="overlay.toggle($event)"> <fa-icon [icon]='faDots'></fa-icon> </div>
+                  <div class="mobile__invoice">
+                    <div class="mobile__invoice--avatar"> {{ estimate.customer[0] }} </div>
+                    <div class="mobile__invoice--id" [routerLink]="['5']"> <h3>{{ estimate.customer }}</h3> <p>{{ estimate.estimateDate | date }}</p></div>
+                    <div class="mobile__invoice--balance"> <h3>{{ estimate.estimateTotal }}</h3> <p>Balance</p> </div>
+                    <div class="mobile__invoice--more" (click)="overlay.toggle($event)"> <fa-icon [icon]='faDots'></fa-icon> </div>
                   </div>
                 </td>
               </tr>
@@ -92,11 +94,11 @@
           <ng-template pTemplate="body" let-estimate>
             <tr>
               <td>
-                <div class="mobile__estimate">
-                  <div class="mobile__estimate--avatar"> {{ estimate.customer[0] }} </div>
-                  <div class="mobile__estimate--id" [routerLink]="['4']" > <h3>{{ estimate.customer }}</h3> <p>{{ estimate.estimateDate | date }}</p></div>
-                  <div class="mobile__estimate--balance"> <h3>{{ estimate.estimateTotal }}</h3> <p>Balance</p> </div>
-                  <div class="mobile__estimate--more" (click)="overlay.toggle($event)"> <fa-icon [icon]='faDots'></fa-icon> </div>
+                <div class="mobile__invoice">
+                  <div class="mobile__invoice--avatar"> {{ estimate.customer[0] }} </div>
+                  <div class="mobile__invoice--id" [routerLink]="['4']" > <h3>{{ estimate.customer }}</h3> <p>{{ estimate.estimateDate | date }}</p></div>
+                  <div class="mobile__invoice--balance"> <h3>{{ estimate.estimateTotal }}</h3> <p>Balance</p> </div>
+                  <div class="mobile__invoice--more" (click)="overlay.toggle($event)"> <fa-icon [icon]='faDots'></fa-icon> </div>
                 </div>
               </td>
             </tr>
@@ -110,7 +112,7 @@
       </p-tabView>
     </div>
 
-    <ng-template #noEstimate>
+    <ng-template #noInvoice>
       <div class="invoices__main--welcome">
         <h3>The Perfect <br> e-vidence of payment!</h3>
         <p>Creating and sending amazing invoices just got easier than forever.</p>
@@ -119,8 +121,4 @@
     </ng-template>
 
   </main>
-
-  <div class="footer">
-    <h2>Footer</h2>
-  </div>
 </div>

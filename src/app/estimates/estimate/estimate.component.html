@@ -6,7 +6,7 @@
     </div>
   </div>
 
-  <div class="estimate__detail">
+  <!-- <div class="estimate__detail">
     <div>
       <div class="estimate__info side">
         <div><span>Estimate:</span> <h3>#000234</h3></div>
@@ -42,10 +42,13 @@
       <div><span>Discount:</span> <h3>Owo</h3></div>
       <div><span>Total:</span> <h3>Owo Po</h3></div>
     </div>
-  </div>
+  </div> -->
 
+  <app-transaction-details [transaction]="estimates">
+
+  </app-transaction-details>
   <div class="estimate__action-btn">
     <button pButton pRipple type="button" label="Edit" class="p-button-outlined p-button-rounded"></button>
-    <button pButton pRipple type="button" label="Send estimate" class="p-button-rounded" (onClick)="popEstimateDialog()"></button>
+    <button pButton pRipple type="button" label="Send estimate" class="p-button-rounded" (click)="popEstimateDialog()"></button>
   </div>
 </div>

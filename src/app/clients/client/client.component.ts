@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-client',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientComponent implements OnInit {
 
+  options!: MenuItem[]
+
   constructor() { }
 
   ngOnInit(): void {
+    this.options = [
+      {label: 'Delete', icon: 'pi pi-times', command: () => { console.log("Delete CLient")}}
+    ]
   }
 
 }

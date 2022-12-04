@@ -11,8 +11,9 @@
         [paginator]="true" [rows]="5" [alwaysShowPaginator]="false" [showJumpToPageDropdown]="true" [showPageLinks]="false"
         [globalFilterFields]="['customer', 'estimateTotal', 'status', 'estimateDate', 'secondEstimateId', 'firstEstimateId']">
         <ng-template pTemplate="caption">
-          <div>
-            <span class="p-input-icon-left ml-auto">
+          <div class="all-estimate__header">
+            <h3 class="m-3">All estimates</h3>
+            <span class="p-input-icon-left">
               <i class="pi pi-search"></i>
               <input pInputText type="text" (input)="tb1.filterGlobal($any($event).target.value, 'contains')" placeholder="Search estimate" />
             </span>
@@ -35,19 +36,46 @@
             <td> {{estData.status}} </td>
             <td> {{estData.estimateTotal}} </td>
             <td> {{estData.estimateDate | date }} </td>
-            <td> icon </td>
+            <td>
+              <button pButton pRipple type="button" icon="pi pi-file-edit" class="p-button-rounded p-button-info p-button-text" routerLink="5/edit"></button>
+              <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-text"></button>
+            </td>
           </tr>
         </ng-template>
       </p-table>
     </div>
 
-    <!-- <div class="mobile">
-      <p-tabView>
-        <p-tabPanel>
-
-        </p-tabPanel>
-      </p-tabView>
-    </div> -->
+    <div class="mobile">
+      <h3>All Estimates</h3>
+      <p-table [value]="estimates" styleClass="p-datatable-lg p-datatable-striped" #tb
+        dataKey="id" [autoLayout]="true" [paginator]="true" [rows]="7" [alwaysShowPaginator]="false" [showJumpToPageDropdown]="true"
+        [showPageLinks]="false" [globalFilterFields]="['customer', 'estimateTotal', 'status', 'estimateDate', 'secondEstimateId', 'firstEstimateId']">
+        <ng-template pTemplate="caption">
+          <div>
+            <span class="p-input-icon-left ml-auto">
+              <i class="pi pi-search"></i>
+              <input pInputText type="text" (input)="tb.filterGlobal($any($event).target.value, 'contains')" placeholder="Search clients" />
+            </span>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="body" let-estimate>
+          <tr>
+            <td>
+              <div class="mobile__estimate">
+                <div class="mobile__estimate--avatar"> {{ estimate.customer[0] }} </div>
+                <div class="mobile__estimate--id" [routerLink]="['5']" > <h3>{{ estimate.customer }}</h3> <p>{{ estimate.estimateDate | date }}</p></div>
+                <div class="mobile__estimate--balance"> <h3>{{ estimate.estimateTotal }}</h3></div>
+                <div class="mobile__estimate--more" (click)="overlay.toggle($event)"> <fa-icon [icon]='faDots'></fa-icon> </div>
+              </div>
+            </td>
+          </tr>
+          <p-overlayPanel #overlay >
+            <p routerLink="5/edit">Edit</p>
+            <p (click)="deleteClient(estimate.id)"> Delete</p>
+          </p-overlayPanel>
+        </ng-template>
+      </p-table>
+    </div>
 
     <ng-template #noEstimate>
       <div class="estimates__main--welcome">

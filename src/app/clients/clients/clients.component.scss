@@ -131,3 +131,29 @@
     }
   }
 }
+
+:host ::ng-deep {
+  .p-datatable {
+    .p-datatable-header {
+      background-color: white;
+      border: none;
+    }
+  }
+
+  // .p-tabview-panels {
+  //   padding: $mp1 0;
+  // }
+
+  // .p-tabview-nav {
+  //   background-color: rgba(159, 225, 255, 0.129);
+  //   padding: $mp2 $mp3;
+  //   display: flex;
+  //   gap: 10px;
+  //   justify-content: space-between;
+  //   border-radius: 15px;
+  // }
+
+  // .tabpanel {
+  //   width: 50%;
+  // }
+}
